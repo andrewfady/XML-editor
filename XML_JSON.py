@@ -1,4 +1,9 @@
-
+"""
+new_temp=tag_name_complete[0].split(' ')
+tag_name_complete=new_temp[0]
+parameter=new_temp[1].split('=')
+split1.insert(i+1,f'@{parameter[0]}')
+"""
 
 
 def xml_json(path):
@@ -10,14 +15,32 @@ def xml_json(path):
     file_data=open(path,'r').read()
     split1=file_data.split('<')
    
-    #print(split1)
+    print(split1)
 
     count=0
     for i in range(len(split1)) :
         tag_name_complete=split1[i].split('>')
-        print(tag_name_complete)
+        
+        
+        if (len(tag_name_complete[0].split(' '))!=1):
+            new_temp=tag_name_complete[0].split(' ')
+            #print("------------------")
+            #print(new_temp)
+            tag_name_complete[0]=new_temp[0]
+            new_temp2=new_temp[1].split('=')
+            #print(new_temp2)
+            split1.insert(i+1,f'@{new_temp2[0]}>{new_temp2[1]}')
+            split1.insert(i+2,f'/{new_temp2[0]}>\n')
+        
+        #print(tag_name_complete)
+
+        
+          
+        
+        
         end_tag="/"+tags[-1]
-        if end_tag==tag_name_complete[0]:
+        end_tag2="/"+tags[-1][1:len(tags[-1])]
+        if end_tag==tag_name_complete[0] or end_tag2==tag_name_complete[0] :
             if tag_type[-1]=="child_array_element": #id,name
                 if comma:
                     if split1[i].split('>')[1]=='':
@@ -109,8 +132,11 @@ def xml_json(path):
 
 def json_format(js_dict):
     temp=""
+    check=False
     tab_counter=1
     for i in range(len(js_dict)):
+        if js_dict[i]=='@':
+            check=True
         if(i==0):
             temp+=js_dict[i]
             temp+="\n"+"     "
@@ -133,6 +159,8 @@ def json_format(js_dict):
 
         else:
            temp+=js_dict[i] 
+    if check:
+        temp+="\n}"
     print(temp)
     #write temp in a file 
       
@@ -141,11 +169,16 @@ def json_format(js_dict):
 
 
 
-js_on=xml_json('check.txt')
-print(js_on)
+#js_on=xml_json('check.txt')
+#print(js_on)
 print("/////////////////////////////////////")
-json_format(xml_json('tryyyyy.xml')) #zawed da bas f el gewy XDDDDDDDDDDD bas yeb2a all left el awel 
+json_format(xml_json('test1.txt')) #zawed da bas f el gewy XDDDDDDDDDDD bas yeb2a all left el awel 
+"""
+ar="noteid=3"
+new=ar.split(' ')
+print(len(new))
 
+"""
 
        
 
