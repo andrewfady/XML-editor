@@ -852,12 +852,81 @@ def operations(selection):
     input_pass=pathh.get()
      # دة بس اللي محتاج يتعدل و ان نعمل كال للفنكشن. هنا الباس اللي معروف هيطلع علية الاوتبوت
     if (operation_type=='Minifying'):
-        pass
+        path_out='Minifying.xml'
+        Minifying(input_pass)
+        ws2 = Tk()
+        ws2.title("PythonGuides")
+        ws2.geometry("700x700")
+        ws2.resizable(False, False)
+        ws2['bg']='#424242'
+        frame2 = Frame(ws2)
+        frame2.pack(pady=5)
+        # adding scrollbars
+        ver_sb = Scrollbar(frame2, orient=VERTICAL )
+        ver_sb.pack(side=RIGHT, fill=BOTH)
+        hor_sb = Scrollbar(frame2, orient=HORIZONTAL)
+        hor_sb.pack(side=BOTTOM, fill=BOTH)
+        # adding writing space
+        txtarea2 = Text(frame2,wrap=NONE, width=80, height=40,xscrollcommand=hor_sb.set)
+        data_out=open(path_out,'r').read()
+        txtarea2.insert('1.0', data_out)
+        txtarea2.pack(side=LEFT)
+        # binding scrollbar with text area
+        txtarea2.config(yscrollcommand=ver_sb.set)
+        ver_sb.config(command=txtarea2.yview)
+        txtarea2.config(xscrollcommand=hor_sb.set)
+        hor_sb.config(command=txtarea2.xview)
         
     elif (operation_type=='prettifying'):
-        pass
+        path_out='prettifying.xml'
+        prettifying(input_pass)
+        ws2 = Tk()
+        ws2.title("PythonGuides")
+        ws2.geometry("700x700")
+        ws2.resizable(False, False)
+        ws2['bg']='#424242'
+        frame2 = Frame(ws2)
+        frame2.pack(pady=5)
+        # adding scrollbars
+        ver_sb = Scrollbar(frame2, orient=VERTICAL )
+        ver_sb.pack(side=RIGHT, fill=BOTH)
+        hor_sb = Scrollbar(frame2, orient=HORIZONTAL)
+        hor_sb.pack(side=BOTTOM, fill=BOTH)
+        # adding writing space
+        txtarea2 = Text(frame2,wrap=NONE, width=80, height=40,xscrollcommand=hor_sb.set)
+        data_out=open(path_out,'r').read()
+        txtarea2.insert('1.0', data_out)
+        txtarea2.pack(side=LEFT)
+        # binding scrollbar with text area
+        txtarea2.config(yscrollcommand=ver_sb.set)
+        ver_sb.config(command=txtarea2.yview)
+        txtarea2.config(xscrollcommand=hor_sb.set)
+        hor_sb.config(command=txtarea2.xview)
     elif (operation_type=='xml to json'):
-        pass
+        path_out='json_format.xml'
+        json_format(xml_json(input_pass))
+        ws2 = Tk()
+        ws2.title("PythonGuides")
+        ws2.geometry("700x700")
+        ws2.resizable(False, False)
+        ws2['bg']='#424242'
+        frame2 = Frame(ws2)
+        frame2.pack(pady=5)
+        # adding scrollbars
+        ver_sb = Scrollbar(frame2, orient=VERTICAL )
+        ver_sb.pack(side=RIGHT, fill=BOTH)
+        hor_sb = Scrollbar(frame2, orient=HORIZONTAL)
+        hor_sb.pack(side=BOTTOM, fill=BOTH)
+        # adding writing space
+        txtarea2 = Text(frame2,wrap=NONE, width=80, height=40,xscrollcommand=hor_sb.set)
+        data_out=open(path_out,'r').read()
+        txtarea2.insert('1.0', data_out)
+        txtarea2.pack(side=LEFT)
+        # binding scrollbar with text area
+        txtarea2.config(yscrollcommand=ver_sb.set)
+        ver_sb.config(command=txtarea2.yview)
+        txtarea2.config(xscrollcommand=hor_sb.set)
+        hor_sb.config(command=txtarea2.xview)
 
     elif (operation_type=='visualize errors'):
         pass
