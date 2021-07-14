@@ -980,10 +980,41 @@ def operations(selection):
         hor_sb.config(command=txtarea2.xview)
     elif (operation_type=='decompress'):
         #input_pass ===.bin
-        pass
+        h = HuffmanCoding(input_pass.split(".")[0]+'.xml')
+        print(input_pass)
+        h.compress()
+        decom_path = h.decompress(input_pass)
+        print("Decompressed file path: " + decom_path)
+        path_out=decom_path
+        ws2 = Tk()
+        ws2.title("PythonGuides")
+        ws2.geometry("700x700")
+        ws2.resizable(False, False)
+        ws2['bg']='#424242'
+        frame2 = Frame(ws2)
+        frame2.pack(pady=5)
+        # adding scrollbars
+        ver_sb = Scrollbar(frame2, orient=VERTICAL )
+        ver_sb.pack(side=RIGHT, fill=BOTH)
+        hor_sb = Scrollbar(frame2, orient=HORIZONTAL)
+        hor_sb.pack(side=BOTTOM, fill=BOTH)
+        # adding writing space
+        txtarea2 = Text(frame2,wrap=NONE, width=80, height=40,xscrollcommand=hor_sb.set)
+        data_out=open(path_out,'r').read()
+        txtarea2.insert('1.0', data_out)
+        txtarea2.pack(side=LEFT)
+        # binding scrollbar with text area
+        txtarea2.config(yscrollcommand=ver_sb.set)
+        ver_sb.config(command=txtarea2.yview)
+        txtarea2.config(xscrollcommand=hor_sb.set)
+        hor_sb.config(command=txtarea2.xview)
  
     elif (operation_type=='compress'):
-        pass
+        path =input_pass
+        h = HuffmanCoding(path)
+        output_path = h.compress()
+        print(path)
+        print("Compressed file path: " + output_path)
         
 
 
