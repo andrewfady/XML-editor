@@ -348,7 +348,7 @@ def xml_json(path):
                 js_dict+="{"
                 js_dict+=f'"{tag_name_complete[0]}":'
             elif tag_type[-1]=="parent":
-                if js_dict[-1]=='}':
+                if js_dict[-1]=='}'or js_dict[-1]=='"':
                     js_dict+=","
                 js_dict+=f'"{tag_name_complete[0]}":'+'{'
             elif tag_type[-1]=="child":
